@@ -51,7 +51,7 @@ export function AddSentenceForm() {
             <FormItem>
               <FormLabel>Sentence</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the sentence" {...field} />
+                <Input autoComplete='off' placeholder="Enter the sentence" {...field} />
               </FormControl>
               <FormDescription>
                 Enter the sentence in the original language.
@@ -67,7 +67,7 @@ export function AddSentenceForm() {
             <FormItem>
               <FormLabel>Translation</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the translation" {...field} />
+                <Input autoComplete='off' placeholder="Enter the translation" {...field} />
               </FormControl>
               <FormDescription>
                 Enter the translation of the sentence.
