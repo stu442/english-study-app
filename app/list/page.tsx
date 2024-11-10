@@ -3,10 +3,12 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { AddSentenceForm } from "./components/addSentenceForm";
 import SentenceCard from "./components/sentenceCard";
-import mockSentences from "./data/sentenceData";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import SentenceList from "./components/getSentences";
 
-export default function ListPage() {
+
+export default async function ListPage() {
+
     return (
         <div className="flex flex-col gap-8 p-8">
             <h1 className="text-3xl font-bold">Sentence Management</h1>
@@ -41,16 +43,7 @@ export default function ListPage() {
                 </Select>
             </div>
             {/* 문장 리스트 */}
-            {mockSentences.map((sentenceData) => (
-                <SentenceCard
-                    key={sentenceData.id}
-                    sentence={sentenceData.sentence}
-                    translation={sentenceData.translation}
-                    createdAt={sentenceData.createdAt}
-                    dueDate={sentenceData.dueDate}
-                    status={sentenceData.status}
-                />
-            ))}
+            <SentenceList />
         </div>
     )
 }

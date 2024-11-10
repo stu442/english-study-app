@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { supabase } from '@/lib/supabase';
 
 const formSchema = z.object({
   sentence: z.string().min(1, {
@@ -36,9 +37,25 @@ export function AddSentenceForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // TODO: Implement the logic to add the sentence
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const { error } = await supabase
+        .from('sentences')
+        .insert({
+          content: values.sentence,
+          translation: values.translation,
+          notes: values.notes,
+          status: 0,
+          review_level: 0,
+          next_review_at: new Date().toISOString(),
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        });
+      if (error) throw error;
+      form.reset();
+    } catch (error) {
+      console.error('Error inserting sentence:', error);
+    }
   }
 
   return (

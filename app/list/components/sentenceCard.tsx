@@ -7,16 +7,25 @@ import Dot from '@/public/assets/icons/dot.svg';
 
 interface SentenceCardProps {
     sentence: string;
-    translation: string;
+    translation: string | null;
     createdAt: Date;
     dueDate: Date;
-    status: SentenceCardStatus;
+    status: number;
 }
 
 export enum SentenceCardStatus {
     NEW = "new",
-    LEARNING = "learning",
     COMPLETED = "completed",
+    LEARNING = "learning",
+}
+
+export function getSentenceCardStatus(status: number): SentenceCardStatus {
+    switch (status) {
+        case 0: return SentenceCardStatus.NEW;
+        case 1: return SentenceCardStatus.LEARNING;
+        case 2: return SentenceCardStatus.COMPLETED;
+        default: return SentenceCardStatus.NEW;
+    }
 }
 
 export default function SentenceCard({ sentence, translation, createdAt, dueDate, status }: SentenceCardProps) {
@@ -31,7 +40,7 @@ export default function SentenceCard({ sentence, translation, createdAt, dueDate
                     <div>
                         <p>Created at: {createdAt.toLocaleDateString()}</p>
                         <p>Due date: {dueDate.toLocaleDateString()}</p>
-                        <p>Status: {status}</p>
+                        <p>Status: {getSentenceCardStatus(status)}</p>
                     </div>
                     {/* 카드 설정  */}
                     <DropdownMenu>
