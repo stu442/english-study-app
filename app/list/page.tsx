@@ -1,14 +1,10 @@
-'use client';
-
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { AddSentenceForm } from "./components/addSentenceForm";
-import SentenceCard from "./components/sentenceCard";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import SentenceList from "./components/getSentences";
 
 
 export default async function ListPage() {
-
     return (
         <div className="flex flex-col gap-8 p-8">
             <h1 className="text-3xl font-bold">Sentence Management</h1>

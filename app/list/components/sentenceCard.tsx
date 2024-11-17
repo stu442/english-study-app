@@ -6,6 +6,7 @@ import Dot from '@/public/assets/icons/dot.svg';
 
 
 interface SentenceCardProps {
+    key: string;
     sentence: string;
     translation: string | null;
     createdAt: Date;
@@ -28,9 +29,9 @@ export function getSentenceCardStatus(status: number): SentenceCardStatus {
     }
 }
 
-export default function SentenceCard({ sentence, translation, createdAt, dueDate, status }: SentenceCardProps) {
+export default function SentenceCard({ key, sentence, translation, createdAt, dueDate, status }: SentenceCardProps) {
     return (
-        <Card>
+        <Card key={key}>
             <CardHeader>
                 <CardTitle>{sentence}</CardTitle>
                 <CardDescription>{translation}</CardDescription>

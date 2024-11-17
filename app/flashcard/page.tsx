@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Volume2, ArrowRight, Plus } from 'lucide-react'
+import { Volume2, Plus } from 'lucide-react'
 
 type Expression = {
   id: string
@@ -89,11 +89,11 @@ export default function FlashcardPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Today's Learning Progress</CardTitle>
+          <CardTitle>Today&apos;s Learning Progress</CardTitle>
         </CardHeader>
         <CardContent>
           <Progress value={progress} className="w-full" />
-          <p className="text-center mt-2">{progress.toFixed(0)}% of today's learning goal achieved</p>
+          <p className="text-center mt-2">{progress.toFixed(0)}% of today&apos;s learning goal achieved</p>
         </CardContent>
       </Card>
 
